@@ -5,7 +5,7 @@ import styles from '../styles/components/Countdown.module.css'
 let countdownTimeout: NodeJS.Timeout;
 
 export function Countdown() {
-    const CICLE_TIME = 0.1 * 60
+    const CICLE_TIME = 25 * 60
 
     const [time, setTime] = useState(CICLE_TIME)
     const [isActive, setIsActive] = useState(false);

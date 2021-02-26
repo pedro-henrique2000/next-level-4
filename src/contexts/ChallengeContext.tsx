@@ -43,7 +43,6 @@ export function ChallengesProvider({children} : ChallengeProviderProps) {
     }
 
     function resetChallenge() {
-        console.log('reset')
         setActiveChallenge(null)
     }
 
