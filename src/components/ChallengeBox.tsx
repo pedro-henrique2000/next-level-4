@@ -1,9 +1,21 @@
 import { useContext } from 'react'
 import { ChallengesContext } from '../contexts/ChallengeContext'
+import { CountdownContext } from '../contexts/CountdownContext'
 import styles from '../styles/components/ChallengeBox.module.css'
 
 export function ChallengeBox() {
-    const { activeChallenge, resetChallenge } = useContext(ChallengesContext)
+    const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext)
+    const { resetCountdown } = useContext(CountdownContext)
+
+    function handleSucceededChallenge(){
+        completeChallenge()
+        resetCountdown()
+    }
+
+    function handleFailedChallenge() {
+        resetChallenge()
+        resetCountdown()
+    }
 
     return (
 
@@ -21,8 +33,8 @@ export function ChallengeBox() {
                     </main>
 
                     <footer>
-                        <button type="button" className={styles.challengeSucceededButton}>Completei</button>
-                        <button type="button" className={styles.challengeFailedButton} onClick={resetChallenge}>Falhei</button>
+                        <button type="button" className={styles.challengeSucceededButton} onClick={handleSucceededChallenge}>Completei</button>
+                        <button type="button" className={styles.challengeFailedButton} onClick={handleFailedChallenge}>Falhei</button>
                     </footer>
                 </div>
             )
